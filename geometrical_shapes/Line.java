@@ -9,7 +9,7 @@ public class Line implements Drawable {
    private final Color color;
 
    public Line(Point a, Point b) {
-      this(a, b, Color.BLACK);
+      this(a, b, Color.WHITE);
    }
 
    public Line(Point a, Point b, Color color) {

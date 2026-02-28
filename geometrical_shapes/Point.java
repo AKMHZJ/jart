@@ -9,7 +9,7 @@ public class Point implements Drawable {
    private final Color color;
 
    public Point(int x, int y) {
-      this(x, y, Color.BLACK);
+      this(x, y, Color.WHITE);
    }
 
    public Point(int x, int y, Color color) {
@@ -23,10 +23,10 @@ public class Point implements Drawable {
       d.display(x, y, color);
    }
 
-   @Override
-   public Color getColor() {
-      return color;
-   }
+   // @Override
+   // public Color getColor() {
+   //    return color;
+   // }
 
    public static Point random(int maxWidth, int maxHeight) {
       ThreadLocalRandom r = ThreadLocalRandom.current();
