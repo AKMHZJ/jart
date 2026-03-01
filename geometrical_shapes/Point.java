@@ -18,15 +18,23 @@ public class Point implements Drawable {
       this.color = color;
    }
 
+   public int getX() {
+      return this.x;
+   }
+
+   public int getY() {
+      return this.y;
+   }
+
    @Override
    public void draw(Displayable d) {
       d.display(x, y, color);
    }
 
-   // @Override
-   // public Color getColor() {
-   //    return color;
-   // }
+   @Override
+   public Color getColor() {
+      return color;
+   }
 
    public static Point random(int maxWidth, int maxHeight) {
       ThreadLocalRandom r = ThreadLocalRandom.current();

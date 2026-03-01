@@ -24,26 +24,8 @@ public class Line implements Drawable {
 
    @Override
    public void draw(Displayable d) {
-      int x0 = a.x, y0 = a.y, x1 = b.x, y1 = b.y;
-      int dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0);
-      int sx = x0 < x1 ? 1 : -1;
-      int sy = y0 < y1 ? 1 : -1;
-      int err = dx - dy;
-
-      while (true) {
-         d.display(x0, y0, color);
-         if (x0 == x1 && y0 == y1)
-            break;
-         int e2 = 2 * err;
-         if (e2 > -dy) {
-            err -= dy;
-            x0 += sx;
-         }
-         if (e2 < dx) {
-            err += dx;
-            y0 += sy;
-         }
-      }
+      int[] dims = DrawingUtility.getDimensions(d);
+      DrawingUtility.drawLine(d, a, b, color, dims[0], dims[1]);
    }
 
    @Override
@@ -56,7 +38,7 @@ public class Line implements Drawable {
       Point p2;
       do {
          p2 = Point.random(maxWidth, maxHeight);
-      } while (p2.x == p1.x && p2.y == p1.y);
+      } while (p2.getX() == p1.getX() && p2.getY() == p1.getY());
       ThreadLocalRandom r = ThreadLocalRandom.current();
       Color c = new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));
       return new Line(p1, p2, c);

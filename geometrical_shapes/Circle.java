@@ -1,14 +1,13 @@
 package geometrical_shapes;
 
-
-import java.util.Random;
 import java.awt.Color;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Circle implements Drawable {
 
-   private int radius;
-   private Point center;
-   private Color color;
+   private final int radius;
+   private final Point center;
+   private final Color color;
 
  
 
@@ -19,13 +18,13 @@ public class Circle implements Drawable {
    }
 
    public static Circle random(int width, int height) {
-      Random random = new Random();
+      ThreadLocalRandom random = ThreadLocalRandom.current();
       int radius = random.nextInt(1, width);
       Point center = Point.random(width, height);
       return new Circle(radius, center);
-
    }
 
+   @Override
    public void draw(Displayable displayable) {
       double perimter = 2 * Math.PI * this.radius;
       double steps = 2 * Math.PI / perimter;
@@ -38,6 +37,8 @@ public class Circle implements Drawable {
       }
    }
 
-   
-
+   @Override
+   public Color getColor() {
+      return color;
+   }
 }
