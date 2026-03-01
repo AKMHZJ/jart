@@ -2,22 +2,9 @@ package geometrical_shapes;
 
 import java.awt.Color;
 
-/**
- * Utility class for common drawing operations.
- * Provides shared methods for line drawing and pixel display with bounds checking.
- */
-public class DrawingUtility {
 
-    /**
-     * Draws a line between two points using Bresenham's algorithm.
-     * 
-     * @param displayable The display surface
-     * @param p1 First point
-     * @param p2 Second point
-     * @param color Color to draw with
-     * @param maxWidth Maximum width (for bounds checking)
-     * @param maxHeight Maximum height (for bounds checking)
-     */
+public class DrawingUtility {
+    
     public static void drawLine(Displayable displayable, Point p1, Point p2, Color color, int maxWidth, int maxHeight) {
         int x1 = p1.getX();
         int y1 = p1.getY();
@@ -48,28 +35,13 @@ public class DrawingUtility {
         }
     }
 
-    /**
-     * Displays a pixel with bounds checking.
-     * 
-     * @param displayable The display surface
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @param color Color to display
-     * @param maxWidth Maximum width
-     * @param maxHeight Maximum height
-     */
+   
     public static void displaySafePixel(Displayable displayable, int x, int y, Color color, int maxWidth, int maxHeight) {
         if (x >= 0 && y >= 0 && x < maxWidth && y < maxHeight) {
             displayable.display(x, y, color);
         }
     }
 
-    /**
-     * Gets the dimensions of a Displayable, with fallback defaults for non-Image types.
-     * 
-     * @param displayable The display surface
-     * @return An array of [width, height]
-     */
     public static int[] getDimensions(Displayable displayable) {
         int width = 10000;
         int height = 10000;

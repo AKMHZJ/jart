@@ -1,9 +1,11 @@
 package geometrical_shapes;
 
 import java.awt.Color;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class Pentagon implements Drawable {
+    private static final Random random = new Random();
+    
     private final Point center;
     private final int radius;
     private final double rotationDegrees;
@@ -13,7 +15,11 @@ public class Pentagon implements Drawable {
         this.center = center;
         this.radius = radius;
         this.rotationDegrees = rotationDegrees;
-        this.color = getColor();
+        this.color = new Color(
+            random.nextInt(256),
+            random.nextInt(256),
+            random.nextInt(256)
+        );
     }
 
     public Pentagon(Point center, int radius) {
@@ -55,12 +61,10 @@ public class Pentagon implements Drawable {
     }
 
     public static Pentagon random(int maxWidth, int maxHeight) {
-        ThreadLocalRandom rand = ThreadLocalRandom.current();
-        
-        int x = rand.nextInt(maxWidth);
-        int y = rand.nextInt(maxHeight);
-        int radius = 20 + rand.nextInt(100);
-        double rotation = rand.nextDouble() * 360;
+        int x = random.nextInt(maxWidth);
+        int y = random.nextInt(maxHeight);
+        int radius = 20 + random.nextInt(100);
+        double rotation = random.nextDouble() * 360;
         
         return new Pentagon(new Point(x, y), radius, rotation);
     }
